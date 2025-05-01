@@ -1,0 +1,110 @@
+/* minor reset */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* vars */
+@property --color-dark {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #121212;
+}
+
+@property --color-light {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f9f3e5;
+}
+@property --font-size {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 48px;
+}
+
+@property --base-padding {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 36px;
+}
+/* global styles */
+:root {
+  color-scheme: light dark;
+}
+::selection {
+  background-color: light-dark(var(--color-dark), var(--color-light));
+  color: light-dark(var(--color-light), var(--color-dark));
+}
+body {
+  font-family: var(--font-atkinson);
+  font-size: var(--font-size);
+  background-color: light-dark(var(--color-light), var(--color-dark));
+  color: light-dark(var(--color-dark), var(--color-light));
+  padding: var(--base-padding);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-atkinson);
+  font-weight: bold;
+  font-size: var(--font-size);
+}
+
+input,
+button {
+  font-size: inherit;
+}
+
+section {
+  max-width: 25em;
+  margin-inline: auto;
+}
+
+.pop {
+  fill: currentColor;
+}
+
+.line {
+  fill: light-dark(var(--color-light), var(--color-dark));
+}
+
+.skip-link a {
+  background-color: light-dark(var(--color-dark), var(--color-light));
+  color: light-dark(var(--color-light), var(--color-dark));
+  font-size: 18px;
+  outline-color: transparent;
+}

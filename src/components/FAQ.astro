@@ -1,0 +1,58 @@
+---
+import { Accordion, AccordionItem } from "accessible-astro-components";
+
+const questions = [
+  {
+    question: "How will this work?",
+    answer:
+      "Artists will be able to upload details of new releases (all their releases if they want) and each week we will have the new releases, filterable on the home page. The intent is for it to be your one stop shop for new Aussie Music.",
+  },
+  {
+    question: "How much will this cost?",
+    answer: "Nothing. This will be free for artists and users.",
+  },
+  {
+    question: "How can I support this project?",
+    answer:
+      "Currently there are some merch types bits and pieces on redbubble (LINK HERE) as well as donations via (THIS THING) ",
+  },
+  {
+    question: "What are you gonna do with my email address?",
+    answer:
+      "it will be stored in a CRM use it to send you updates about the project. We take data privacy very seriously and will never share your data with anyone else. We use a privacy first analytics platfrom, Umami which is 100% GDPR compliant and does not reveal any identifying data.",
+  },
+  {
+    question: "I'd like to be removed from the list?",
+    answer:
+      "No stress, in the welcome email we sent you can hit unsubscribe or alternatively flick an email to privacy@dropbearsrecord.club asking to be removed and we will get it sorted, no questions asked.",
+  },
+
+  {
+    question: "Can I suggest a feature?",
+    answer:
+      "Sure, we'd love to hear it. Send an email to developer@dropbearsrecord.club and we can add it to the list to flesh out.",
+  },
+  {
+    question: "How do you plan to make money?",
+    answer:
+      "Hopefully tug on enough heart strings to keep the lights on via donations and merch sales. I am not the star here, the artists deserve your $$$ more than this site does.",
+  },
+];
+---
+
+<section class="faq">
+  <Accordion>
+    {
+      questions.map((question) => (
+        <AccordionItem title={question.question} variant="chevron">
+          <p>{question.answer}</p>
+        </AccordionItem>
+      ))
+    }
+  </Accordion>
+</section>
+<style>
+  section {
+    padding-inline: calc(var(--base-padding) * 1.5);
+  }
+</style>
