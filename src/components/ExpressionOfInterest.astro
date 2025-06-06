@@ -2,24 +2,62 @@
 
 ---
 
-<form action="">
-  <p style="font-size: 18px">Sign up below for updates</p>
-  <div>
-    <label for="email">Email:</label>
+<form class="waiting-list-form" aria-labelledby="signup-heading">
+  <h2 id="signup-heading">Coming Soon.</h2>
+  <p class="text-sm">Get early access, drop your email below.</p>
+  <div class="form-group">
+    <label for="email" class="sr-only">Email Address</label>
     <input
       type="email"
       id="email"
       name="email"
-      placeholder="email address"
+      placeholder="your@email.com"
       required
     />
+    <p class="text-sm">We respect your privacy. Unsubscribe anytime.</p>
   </div>
-  <div>
-    <label for="artist">Artist</label>
-    <input type="radio" id="artist" name="userType" value="artist" required />
-    <label for="fan">Fan</label>
-    <input type="radio" id="fan" name="userType" value="fan" required />
-  </div>
-
-  <button type="submit">Join the club</button>
+  <button type="submit">Join</button>
 </form>
+<script>
+  const form: HTMLFormElement | null =
+    document.querySelector(".waiting-list-form");
+  const createContact = async (event: SubmitEvent) => {
+    const email = document.querySelector<HTMLInputElement>("#email")?.value;
+    const payload = {
+      email: email,
+    };
+    event.preventDefault();
+
+    await fetch("/api/sub", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+  };
+
+  form?.addEventListener("submit", createContact);
+</script>
+
+<style>
+  form {
+    border-top: 1px solid var(--color-light);
+    margin-block-start: 2rem;
+    padding-block-start: 4rem;
+
+    h2 {
+      margin-block-end: 1rem;
+    }
+
+    .form-group {
+      margin-block-start: 1rem;
+      margin-block-end: 0.25rem;
+    }
+
+    input {
+      font-size: 36px;
+      padding: 0.5rem 1rem;
+    }
+  }
+</style>

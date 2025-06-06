@@ -14,7 +14,7 @@ const questions = [
   {
     question: "How can I support this project?",
     answer:
-      "Currently there are some merch types bits and pieces on redbubble (LINK HERE) as well as donations via (THIS THING) ",
+      "Aw thanks, for now just sign up. We will have merch and donation rounds to cover basic costs at some point. But really go support the artists",
   },
   {
     question: "What are you gonna do with my email address?",
@@ -24,13 +24,13 @@ const questions = [
   {
     question: "I'd like to be removed from the list?",
     answer:
-      "No stress, in the welcome email we sent you can hit unsubscribe or alternatively flick an email to privacy@dropbearsrecord.club asking to be removed and we will get it sorted, no questions asked.",
+      "No stress, in the welcome email we sent you can hit unsubscribe or alternatively flick an email to dev@dropbearsrecord.club asking to be removed and we will get it sorted, no questions asked.",
   },
 
   {
     question: "Can I suggest a feature?",
     answer:
-      "Sure, we'd love to hear it. Send an email to developer@dropbearsrecord.club and we can add it to the list to flesh out.",
+      "Sure, we'd love to hear it. Send an email to dev@dropbearsrecord.club and we can add it to the list to flesh out.",
   },
   {
     question: "How do you plan to make money?",
@@ -45,14 +45,84 @@ const questions = [
     {
       questions.map((question) => (
         <AccordionItem title={question.question} variant="chevron">
-          <p>{question.answer}</p>
+          <p class="answer">{question.answer}</p>
         </AccordionItem>
       ))
     }
   </Accordion>
+  <!-- TODO do this programatically -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How will this work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Artists will be able to upload details of new releases (all their releases if they want) and each week we will have the new releases, filterable on the home page. The intent is for it to be your one stop shop for new Aussie Music."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much will this cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nothing. This will be free for artists and users."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I support this project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Currently there are some merch types bits and pieces on redbubble (LINK HERE) as well as donations via (THIS THING)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are you gonna do with my email address?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It will be stored in a CRM and used to send you updates about the project. We take data privacy very seriously and will never share your data with anyone else. We use a privacy-first analytics platform, Umami, which is 100% GDPR compliant and does not reveal any identifying data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I'd like to be removed from the list?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No stress. In the welcome email we sent you, you can hit unsubscribe or alternatively flick an email to privacy@dropbearsrecord.club asking to be removed and we will get it sorted, no questions asked."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I suggest a feature?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sure, we'd love to hear it. Send an email to dev@dropbearsrecord.club and we can add it to the list to flesh out."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you plan to make money?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hopefully tug on enough heartstrings to keep the lights on via donations and merch sales. I am not the star here; the artists deserve your $$$ more than this site does."
+          }
+        }
+      ]
+    }
+  </script>
 </section>
 <style>
   section {
     padding-inline: calc(var(--base-padding) * 1.5);
+  }
+
+  ul {
+    --font-size: 18px;
+    font-size: var(--font-size);
   }
 </style>
