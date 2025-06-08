@@ -1,10 +1,3 @@
-export const prerender = false;
-
-interface RequestParams {
-  email: string;
-  userTytpe: string;
-}
-
 export async function POST({ request }: any) {
   try {
     const body = await request.json();

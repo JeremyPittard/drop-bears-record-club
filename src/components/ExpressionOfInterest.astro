@@ -1,5 +1,5 @@
 ---
-
+export const prerender = true;
 ---
 
 <form class="waiting-list-form" aria-labelledby="signup-heading">
@@ -20,9 +20,15 @@
   </div>
   <button type="submit">Join</button>
 </form>
+<h2 class="thanks msg hide">Thanks you'll hear from us soon</h2>
+<h2 class="error msg hide">
+  sorry, something went wrong please try again soon
+</h2>
 <script>
   const form: HTMLFormElement | null =
     document.querySelector(".waiting-list-form");
+  const errMsg = document.querySelector(".error");
+  const thanksMsg = document.querySelector(".thanks");
   const createContact = async (event: SubmitEvent) => {
     const email = document.querySelector<HTMLInputElement>("#email")?.value;
     const payload = {
@@ -36,7 +42,15 @@
         "content-type": "application/json",
       },
       body: JSON.stringify(payload),
-    });
+    })
+      .then(() => {
+        form?.classList.add("hide");
+        thanksMsg?.classList.remove("hide");
+      })
+      .catch(() => {
+        form?.classList.add("hide");
+        errMsg?.classList.remove("hide");
+      });
   };
 
   form?.addEventListener("submit", createContact);
@@ -94,5 +108,14 @@
     @media (min-width: 768px) {
       display: grid;
     }
+  }
+  .msg {
+    border-top: 1px solid var(--color-light);
+    border-bottom: 1px solid var(--color-light);
+    margin-block: 2rem;
+    padding-block: 4rem;
+  }
+  .hide {
+    display: none;
   }
 </style>
