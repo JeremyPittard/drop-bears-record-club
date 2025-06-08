@@ -2,11 +2,19 @@
 import DBRC from "../assets/img/dbrc.svg";
 ---
 
-<section class="hero">
+<header class="hero">
   <DBRC width={400} height={"auto"} />
-</section>
+</header>
 <style>
-  section {
-    margin-top: 2rem;
+  header {
+    svg {
+      max-width: 250px;
+    }
+    @media (min-width: 768px) {
+      margin-top: 2rem;
+      svg {
+        max-width: unset;
+      }
+    }
   }
 </style>

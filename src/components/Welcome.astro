@@ -33,12 +33,21 @@ import ExpressionOfInterest from "./ExpressionOfInterest.astro";
 <style>
   h1 {
     font-weight: bold;
-    margin-block-start: 10rem;
+    margin-block-start: 4rem;
+
+    @media (min-width: 768px) {
+      margin-block-start: 8rem;
+    }
+    @media (min-width: 1024) {
+      margin-block-start: 8rem;
+    }
   }
   .intro {
     display: flex;
     flex-direction: column;
-    padding-inline: calc(var(--base-padding) * 1.5);
+    @media (min-width: 768px) {
+      padding-inline: calc(var(--base-padding) * 1.5);
+    }
   }
 
   p {

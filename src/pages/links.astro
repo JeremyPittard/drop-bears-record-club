@@ -1,0 +1,35 @@
+---
+// page for links
+import Layout from "../layouts/Layout.astro";
+
+interface Link {
+  title: string;
+  url: string;
+  description?: string;
+  icon?: string;
+  target?: "_blank" | "_self";
+}
+
+const links: Link[] = [
+  {
+    title: "instagram",
+    url: "https://www.instagram.com/dropbearsrecordclub",
+  },
+];
+---
+
+<Layout title="Links | DBRC">
+  <main>
+    <ul>
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.url} target={!link.target ? "_blank" : link.target}>
+              {link.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Layout>

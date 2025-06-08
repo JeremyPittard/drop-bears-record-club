@@ -3,9 +3,14 @@ import { Accordion, AccordionItem } from "accessible-astro-components";
 
 const questions = [
   {
+    question: "WTF is this?",
+    answer:
+      "This is a project to help promote Australian music, The current idea is essentially a directory of Aussie music, the artists can then choose where they want to sell/stream/whatevs and this will link out to all avenues the artist wishes. At no cost to the artis or fan.",
+  },
+  {
     question: "How will this work?",
     answer:
-      "Artists will be able to upload details of new releases (all their releases if they want) and each week we will have the new releases, filterable on the home page. The intent is for it to be your one stop shop for new Aussie Music.",
+      "Artists will be able to upload details of new releases (all their releases if they want) and each week we will have the new releases, filterable on the home page. The intent is for it to be your traffic directory for new Aussie Music.",
   },
   {
     question: "How much will this cost?",
@@ -41,6 +46,8 @@ const questions = [
 ---
 
 <section class="faq">
+  <h2>FAQ's</h2>
+  <p>(or more realistically just questions.)</p>
   <Accordion>
     {
       questions.map((question) => (
@@ -61,7 +68,7 @@ const questions = [
           "name": "How will this work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Artists will be able to upload details of new releases (all their releases if they want) and each week we will have the new releases, filterable on the home page. The intent is for it to be your one stop shop for new Aussie Music."
+            "text": "Artists will be able to upload details of new releases (all their releases if they want) and each week we will have the new releases, filterable on the home page. The intent is for it to be your traffic directory for new Aussie Music."
           }
         },
         {
@@ -119,9 +126,16 @@ const questions = [
 <style>
   section {
     padding-inline: calc(var(--base-padding) * 1.5);
+    margin-block: 2rem;
+    padding-block-start: 4rem;
   }
 
-  ul {
+  p {
+    margin-block-end: 2rem;
+  }
+
+  ul,
+  p {
     --font-size: 18px;
     font-size: var(--font-size);
   }

@@ -50,17 +50,25 @@ img {
 @property --font-size {
   syntax: "<length>";
   inherits: true;
-  initial-value: 48px;
+  initial-value: 28px;
 }
 
 @property --base-padding {
   syntax: "<length>";
-  inherits: false;
-  initial-value: 36px;
+  inherits: true;
+  initial-value: 18px;
 }
 /* global styles */
 :root {
   color-scheme: light dark;
+
+  @media (min-width: 768px) {
+    --font-size: 36px;
+    --base-padding: 36px;
+  }
+  @media (min-width: 1024px) {
+    --font-size: 48px;
+  }
 }
 ::selection {
   background-color: light-dark(var(--color-dark), var(--color-light));
@@ -83,10 +91,12 @@ h6 {
   font-family: var(--font-atkinson);
   font-weight: bold;
   font-size: var(--font-size);
+  text-wrap: pretty;
 }
 
 p {
   font-size: var(--font-size);
+  text-wrap: pretty;
 }
 
 input,
@@ -94,7 +104,8 @@ button {
   font-size: inherit;
 }
 
-section {
+section,
+header {
   max-width: 25em;
   margin-inline: auto;
 }
@@ -127,4 +138,9 @@ section {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+svg,
+img {
+  max-width: 100%;
 }
