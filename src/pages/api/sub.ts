@@ -10,7 +10,7 @@ export async function POST({ request }: any) {
       },
       body: JSON.stringify(body),
     };
-    fetch("https://api.brevo.com/v3/contacts", options)
+    await fetch("https://api.brevo.com/v3/contacts", options)
       .then((res) => res.json())
       .then((res) => console.log(res))
       .catch((err) => console.error(err));
