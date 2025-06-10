@@ -30,7 +30,7 @@ export async function POST({ request, locals }: any) {
       },
       body: JSON.stringify(body),
     };
-    const response = await fetch("https://abi.breov.com/v3/contacts", options);
+    const response = await fetch("https://api.brevo.com/v3/contacts", options);
     if (!response.ok) {
       const errorDetails = await response.json();
       console.error("Brevo API error:", errorDetails);
