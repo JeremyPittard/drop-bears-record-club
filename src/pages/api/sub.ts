@@ -1,7 +1,9 @@
 export const prerender = false;
+
 export async function POST({ request, locals }: any) {
   const { env } = locals.runtime;
   const key = env.BAK;
+
   if (!key) {
     return new Response(
       JSON.stringify({
@@ -16,9 +18,9 @@ export async function POST({ request, locals }: any) {
       }
     );
   }
+
   try {
     const body = await request.json();
-    let resp;
     const options = {
       method: "POST",
       headers: {
@@ -28,11 +30,18 @@ export async function POST({ request, locals }: any) {
       },
       body: JSON.stringify(body),
     };
-    fetch("https://api.brevo.com/v3/contacts", options)
-      .then((response) => response.json())
-      .then((response) => (resp = response))
-      .catch((err) => console.error(err));
-    return new Response(JSON.stringify(resp), {
+    const response = await fetch("https://abi.breov.com/v3/contacts", options);
+    if (!response.ok) {
+      const errorDetails = await response.json();
+      console.error("Brevo API error:", errorDetails);
+      throw new Error(
+        errorDetails.message || "Failed to add contact to Brevo."
+      );
+    }
+
+    const result = await response.json();
+
+    return new Response(JSON.stringify("ya did good billy" + result), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
