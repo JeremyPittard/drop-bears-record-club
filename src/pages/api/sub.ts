@@ -1,4 +1,3 @@
-export const prerender = false;
 export async function POST({ request, locals }: any) {
   const { env } = locals.runtime;
   const key = env.BAK;
