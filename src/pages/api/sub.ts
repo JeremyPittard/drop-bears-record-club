@@ -1,11 +1,10 @@
 export const prerender = false;
-
-import { getEnvVar } from "../../utils/getEnv";
-
-export async function POST({ request }: any) {
-  const key = getEnvVar("BAK");
+export async function POST({ request, locals }: any) {
+  const { env } = locals.runtime;
+  const key = env.BAK;
   try {
     const body = await request.json();
+    let resp;
     const options = {
       method: "POST",
       headers: {
@@ -16,10 +15,10 @@ export async function POST({ request }: any) {
       body: JSON.stringify(body),
     };
     fetch("https://api.brevo.com/v3/contacts", options)
-      .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((response) => response.json())
+      .then((response) => (resp = response))
       .catch((err) => console.error(err));
-    return new Response(JSON.stringify("woop"), {
+    return new Response(JSON.stringify(resp), {
       status: 200,
       headers: {
         "Content-Type": "application/json",

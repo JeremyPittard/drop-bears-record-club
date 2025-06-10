@@ -1,8 +1,5 @@
 ---
 import ExpressionOfInterest from "./ExpressionOfInterest.astro";
-import { getEnvVar } from "../utils/getEnv";
-
-const thing = getEnvVar("BAK");
 ---
 
 <section class="intro">
@@ -31,7 +28,7 @@ const thing = getEnvVar("BAK");
 
   <p>Welcome to Drop Bears Record Club.</p>
 
-  <!-- <ExpressionOfInterest /> -->
+  <ExpressionOfInterest />
 </section>
 <style>
   h1 {
