@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.5.4",
+    "@astrojs/partytown": "^2.1.4",
     "accessible-astro-components": "^4.1.0",
     "astro": "^5.7.5"
   },

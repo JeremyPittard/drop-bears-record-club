@@ -3,9 +3,10 @@ import { defineConfig, fontProviders } from "astro/config";
 
 import cloudflare from "@astrojs/cloudflare";
 
+import partytown from "@astrojs/partytown";
+
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
   experimental: {
     fonts: [
       {
@@ -21,4 +22,6 @@ export default defineConfig({
       enabled: true,
     },
   }),
+
+  integrations: [partytown()],
 });
