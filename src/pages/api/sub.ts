@@ -1,6 +1,21 @@
+export const prerender = false;
 export async function POST({ request, locals }: any) {
   const { env } = locals.runtime;
   const key = env.BAK;
+  if (!key) {
+    return new Response(
+      JSON.stringify({
+        error: "Missing API key",
+        message: "key gone walkabout",
+      }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
   try {
     const body = await request.json();
     let resp;
