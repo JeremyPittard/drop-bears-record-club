@@ -1,35 +1,30 @@
+export const prerender = false;
+
+import { getEnvVar } from "../../utils/getEnv";
+
 export async function POST({ request }: any) {
+  const key = getEnvVar("BAK");
   try {
     const body = await request.json();
-
     const options = {
       method: "POST",
       headers: {
         accept: "application/json",
         "content-type": "application/json",
-        "api-key": import.meta.env.BAK,
+        "api-key": key,
       },
       body: JSON.stringify(body),
     };
-
-    const response = await fetch("https://api.brevo.com/v3/contacts", options);
-
-    const result = await response.json();
-    if (!response.ok) {
-      throw new Error(
-        `Brevo API error: ${response.status} - ${JSON.stringify(result)}`
-      );
-    }
-
-    return new Response(
-      JSON.stringify({ success: true, brevoResponse: result }),
-      {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    fetch("https://api.brevo.com/v3/contacts", options)
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+    return new Response(JSON.stringify("woop"), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   } catch (error: any) {
     return new Response(
       JSON.stringify({
